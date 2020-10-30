@@ -1,0 +1,1 @@
+web: gunicorn denunciafacilapi.wsgi --log-file -
