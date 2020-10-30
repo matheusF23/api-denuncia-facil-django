@@ -10,5 +10,6 @@ Pillow==7.1.2
 pytz==2020.1
 sqlparse==0.3.1
 coverage
+flake8
 gunicorn
 psycopg2
