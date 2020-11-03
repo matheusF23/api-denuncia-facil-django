@@ -45,7 +45,7 @@ INSTALLED_APPS = [
     'rest_framework.authtoken',
 
 
-    #MY APPS
+    # MY APPS
     'apps.accounts',
 ]
 
@@ -138,4 +138,3 @@ STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 
 MEDIA_ROOT = 'images'
 MEDIA_URL = '/media/'
-
