@@ -22,7 +22,7 @@ coverage:
   stage: test
   image: python:3.6
   before_script: 
-    - pip install -r requirements.txt
+    - pip install -r requirements-local.txt
   script:
     - coverage run manage.py test
     - coverage html
@@ -37,7 +37,7 @@ pytest:
   stage: test
   image: python:3.6
   before_script:
-    - pip install -r requirements.txt
+    - pip install -r requirements-local.txt
   script:
     - python manage.py test
 
