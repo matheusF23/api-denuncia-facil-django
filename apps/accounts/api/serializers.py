@@ -29,3 +29,11 @@ class UserDetailSerializer(serializers.ModelSerializer):
         user = User.objects.create_user(**validated_data)
         Token.objects.get_or_create(user=user)
         return user
+
+    def update(self, validated_data):
+        """Update and return a edited user"""
+        email = validated_data.user.email
+        user = User.objects.filter(email=email).update(**validated_data)
+        return user
+
+        

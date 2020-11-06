@@ -10,7 +10,7 @@ from . import permissions
 from .serializers import UserDetailSerializer
 
 
-class UserViewSet(viewsets.GenericViewSet, mixins.CreateModelMixin):
+class UserViewSet(viewsets.GenericViewSet, mixins.CreateModelMixin, mixins.UpdateModelMixin):
     serializer_class = UserDetailSerializer
     queryset = get_user_model().objects.all()
     authentication_classes = (TokenAuthentication,)
@@ -43,6 +43,17 @@ class UserViewSet(viewsets.GenericViewSet, mixins.CreateModelMixin):
                             status=status.HTTP_409_CONFLICT)
         res = self.create(request, *args, **kwargs)
         return res
+
+    @action(methods=['put','patch', ], detail=False, permission_classes=[IsAuthenticated], authentication_classes=[TokenAuthentication])
+    def update_profile(self, request, *args, **kwargs):
+        params = request.data
+        email = params.get("email", None)
+        if email:
+            return Response({"message": "Não pode alterar o email"},
+                            status=status.HTTP_400_BAD_REQUEST)
+        res = self.update(request, *args, **kwargs)
+        return res
+
 
 
 def missing_fields(data: dict, *fields):
