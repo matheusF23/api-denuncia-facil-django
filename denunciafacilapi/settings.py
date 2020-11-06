@@ -148,3 +148,6 @@ EMAIL_USE_TLS = True
 
 EMAIL_HOST_USER = config('EMAIL_HOST_USER', default='invalid@email.com')
 EMAIL_HOST_PASSWORD = config('EMAIL_HOST_PASSWORD', default='no_pass')
+
+# Djang0 heroku
+django_heroku.settings(locals())
