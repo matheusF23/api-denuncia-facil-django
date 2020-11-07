@@ -4,7 +4,7 @@ from rest_framework.authtoken.models import Token
 from ..models import User
 
 
-class UserDetailSerializer(serializers.ModelSerializer):
+class UserSerializer(serializers.ModelSerializer):
     """Detail serializer of User objetc"""
     token = serializers.SerializerMethodField()
 
@@ -29,11 +29,4 @@ class UserDetailSerializer(serializers.ModelSerializer):
         user = User.objects.create_user(**validated_data)
         Token.objects.get_or_create(user=user)
         return user
-
-    def update(self, validated_data):
-        """Update and return a edited user"""
-        email = validated_data.user.email
-        user = User.objects.filter(email=email).update(**validated_data)
-        return user
-
         
