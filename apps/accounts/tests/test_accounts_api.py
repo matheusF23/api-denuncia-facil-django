@@ -10,6 +10,7 @@ from apps.accounts.api.viewsets import missing_fields
 
 REGISTER_USER_URL = reverse('accounts-register')
 LOGIN_URL = reverse('accounts-login')
+UPDATE_URL = reverse('accounts-updateprofile')
 
 
 def sample_user(**params):
@@ -151,10 +152,54 @@ class PublicUserApiTests(TestCase):
         self.assertEqual((is_missing, field), (True, 'd'))
 
 
-# class TestAccountsPath(TestCase):
-#     def test_path_in_accounts_routes(self):
-#         register_url = '/api/accounts/register/'
-#         self.assertEqual(REGISTER_USER_URL, register_url)
+class PrivateUserApiTests(TestCase):
+    """Test API requests that require authentication"""
 
-#         login_url = '/api/accounts/login/'
-#         self.assertEqual(LOGIN_URL, login_url)
+    def setUp(self):
+        self.user = sample_user(
+            email='test@x9.com',
+            password='testpass'
+        )
+        self.client = APIClient()
+        self.client.force_authenticate(user=self.user)
+
+    def test_update_user_profile(self):
+        """Test updating the user profile for authenticated user"""
+        payload = dict(
+            name="Other Name",
+            cellphone="98745345"
+        )
+
+        res = self.client.put(UPDATE_URL, payload)
+        self.user.refresh_from_db()
+
+        self.assertEqual(res.status_code, status.HTTP_200_OK,
+                         'status_code must be 200')
+        self.assertIn(payload['name'], self.user.name,
+                      f"name must be {payload['name']}")
+        self.assertIn(payload['cellphone'], self.user.cellphone,
+                      f"cellphone must be {payload['cellphone']}")
+
+    def test_update_user_email(self):
+        """Test updating the email of user profile for authenticated user"""
+        payload = dict(
+            email="otheremail@x9.com"
+        )
+
+        res = self.client.put(UPDATE_URL, payload)
+        self.user.refresh_from_db()
+
+        self.assertEqual(res.status_code, status.HTTP_400_BAD_REQUEST,
+                         'status_code must be 400')
+
+    def test_update_user_password(self):
+        """Test updating the password of user profile for authenticated user"""
+        payload = dict(
+            password="asdfasdf"
+        )
+
+        res = self.client.put(UPDATE_URL, payload)
+        self.user.refresh_from_db()
+
+        self.assertEqual(res.status_code, status.HTTP_400_BAD_REQUEST,
+                         'status_code must be 400')

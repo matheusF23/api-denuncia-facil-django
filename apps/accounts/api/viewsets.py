@@ -7,11 +7,11 @@ from rest_framework.permissions import IsAuthenticated
 from rest_framework.response import Response
 
 from . import permissions
-from .serializers import UserDetailSerializer
+from .serializers import UserSerializer
 
 
 class UserViewSet(viewsets.GenericViewSet, mixins.CreateModelMixin):
-    serializer_class = UserDetailSerializer
+    serializer_class = UserSerializer
     queryset = get_user_model().objects.all()
     authentication_classes = (TokenAuthentication,)
     permission_classes = (IsAuthenticated, permissions.UpdateOwnUser)
@@ -43,6 +43,27 @@ class UserViewSet(viewsets.GenericViewSet, mixins.CreateModelMixin):
                             status=status.HTTP_409_CONFLICT)
         res = self.create(request, *args, **kwargs)
         return res
+
+    @action(methods=['put', 'patch', ], detail=False, permission_classes=[IsAuthenticated, permissions.UpdateOwnUser], authentication_classes=[TokenAuthentication])
+    def updateprofile(self, request, *args, **kwargs):
+        params = request.data
+        email = params.get("email", None)
+        password = params.get("password", None)
+
+        if email:
+            return Response({"message": "O email não pode ser alterado"},
+                            status=status.HTTP_400_BAD_REQUEST)
+
+        if password:
+            return Response({"message": "A senha não pode ser alterada por esta requisição"},
+                            status=status.HTTP_400_BAD_REQUEST)
+
+        get_user_model().objects.filter(email=request.user.email).update(**params)
+        user = get_user_model().objects.get(email=request.user.email)
+        return Response(dict(
+            name=user.name,
+            cellphone=user.cellphone
+        ), status=status.HTTP_200_OK)
 
 
 def missing_fields(data: dict, *fields):

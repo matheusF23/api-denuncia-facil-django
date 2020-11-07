@@ -4,7 +4,7 @@ from rest_framework.authtoken.models import Token
 from ..models import User
 
 
-class UserDetailSerializer(serializers.ModelSerializer):
+class UserSerializer(serializers.ModelSerializer):
     """Detail serializer of User objetc"""
     token = serializers.SerializerMethodField()
 
