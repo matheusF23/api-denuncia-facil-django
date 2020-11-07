@@ -45,10 +45,10 @@ class UserViewSet(viewsets.GenericViewSet, mixins.CreateModelMixin):
         return res
 
     @action(methods=['put', 'patch', ], detail=False, permission_classes=[IsAuthenticated, permissions.UpdateOwnUser], authentication_classes=[TokenAuthentication])
-    def update_profile(self, request, *args, **kwargs):
+    def updateprofile(self, request, *args, **kwargs):
         params = request.data
         email = params.get("email", None)
-        password = params.pop("password", None)
+        password = params.get("password", None)
 
         if email:
             return Response({"message": "O email não pode ser alterado"},
@@ -61,7 +61,6 @@ class UserViewSet(viewsets.GenericViewSet, mixins.CreateModelMixin):
         get_user_model().objects.filter(email=request.user.email).update(**params)
         user = get_user_model().objects.get(email=request.user.email)
         return Response(dict(
-            email=user.email,
             name=user.name,
             cellphone=user.cellphone
         ), status=status.HTTP_200_OK)

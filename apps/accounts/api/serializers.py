@@ -29,4 +29,3 @@ class UserSerializer(serializers.ModelSerializer):
         user = User.objects.create_user(**validated_data)
         Token.objects.get_or_create(user=user)
         return user
-        
