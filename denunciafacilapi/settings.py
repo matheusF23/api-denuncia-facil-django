@@ -47,6 +47,7 @@ INSTALLED_APPS = [
 
     # MY APPS
     'apps.accounts',
+    'apps.guards',
     'apps.occurrences',
 ]
 
