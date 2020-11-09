@@ -29,7 +29,7 @@ $ pip install -r environments/requirements-local.txt
 
 ### API
 
-*BASE_URL* = https://.herokuapp.com
+*BASE_URL* = https://api-denuncia-facil.herokuapp.com/
 
 * Endpoint *accounts*
 
