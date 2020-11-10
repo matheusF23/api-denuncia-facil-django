@@ -2,4 +2,5 @@ from django.apps import AppConfig
 
 
 class OccurrencesConfig(AppConfig):
-    name = 'occurrences'
+    name = 'apps.occurrences'
+    verbose_name = 'ocorrências'

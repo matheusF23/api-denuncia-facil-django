@@ -11,13 +11,13 @@ class Occurrence(models.Model):
                              verbose_name='nome usuário')
     guard = models.ForeignKey(Guard, on_delete=models.PROTECT, verbose_name='guarda')
     license_plate = models.CharField(max_length=10, blank=True, null=True, verbose_name='placa veículo')
-    occurrence_type = models.CharField(max_length=50, blank=True, null=True,verbose_name='tipo')
-    occurrence_title = models.CharField(max_length=255, blank=True, null=True,verbose_name='título')
-    location = models.CharField(max_length=400, blank=True, null=True,verbose_name='localização')
-    
+    occurrence_type = models.CharField(max_length=50, blank=True, null=True, verbose_name='tipo')
+    occurrence_title = models.CharField(max_length=255, blank=True, null=True, verbose_name='título')
+    location = models.CharField(max_length=400, blank=True, null=True, verbose_name='localização')
+
     STATUS_CHOICES = [
-      (0, 'Enviado'),
-      (1, 'Recebido'),
+        (0, 'Enviado'),
+        (1, 'Recebido'),
     ]
     status = models.IntegerField(choices=STATUS_CHOICES, default=0)
     created_at = models.DateField(default=date.today, verbose_name='data')
@@ -29,4 +29,3 @@ class Occurrence(models.Model):
 
     def __str__(self):
         return f'{self.occurrence_title}'
-
