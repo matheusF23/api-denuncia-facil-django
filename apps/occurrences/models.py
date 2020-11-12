@@ -9,7 +9,8 @@ from denunciafacilapi import settings
 class Occurrence(models.Model):
     user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.PROTECT,
                              verbose_name='nome usuário')
-    guard = models.ForeignKey(Guard, on_delete=models.PROTECT, verbose_name='guarda')
+    guard = models.ForeignKey(Guard, on_delete=models.PROTECT, blank=True, null=True,
+                              verbose_name='guarda')
     license_plate = models.CharField(max_length=10, blank=True, null=True, verbose_name='placa veículo')
     occurrence_type = models.CharField(max_length=50, blank=True, null=True, verbose_name='tipo')
     occurrence_title = models.CharField(max_length=255, blank=True, null=True, verbose_name='título')
