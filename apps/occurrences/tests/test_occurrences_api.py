@@ -106,7 +106,6 @@ class PrivateOccurrenceApiTests(TestCase):
     def test_view_occurrence_detail(self):
         """Test viewing a occurrence detail"""
         occurrence = sample_occurrence(self.user, self.guard)
-        occurrence2 = sample_occurrence(self.user, self.guard)
 
         url = detail_url(occurrence.id)
         res = self.client.get(url)
@@ -129,7 +128,6 @@ class PrivateOccurrenceApiTests(TestCase):
 
         self.assertEqual(res.status_code, status.HTTP_201_CREATED,
                          'status code must be 201 CREATED')
-        occurrence = Occurrence.objects.get(id=res.data['id'])
         for key, value in payload.items():
             self.assertEqual(res.data[key], value,
                              'payload must be equals res.data')
@@ -141,14 +139,14 @@ class PrivateOccurrenceApiTests(TestCase):
         payload = {
             'occurrence_title': 'Me barruaram',
             'created_at': date.today() - timedelta(2)
-            }
+        }
         url = detail_url(occurrence.id)
         self.client.patch(url, payload)
 
         occurrence.refresh_from_db()
         self.assertEqual(occurrence.occurrence_title, payload['occurrence_title'])
         self.assertEqual(occurrence.created_at, payload['created_at'])
-    
+
     def test_full_update(self):
         """Test updating a occurrence with put"""
         occurrence = sample_occurrence(self.user, self.guard)
