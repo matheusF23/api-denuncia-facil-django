@@ -47,7 +47,8 @@ INSTALLED_APPS = [
 
     # MY APPS
     'apps.accounts',
-    'apps.guards'
+    'apps.guards',
+    'apps.occurrences',
 ]
 
 AUTH_USER_MODEL = 'accounts.User'

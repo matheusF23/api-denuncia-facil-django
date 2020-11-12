@@ -7,6 +7,7 @@ from django.urls import path, include
 from rest_framework import routers
 
 from apps.accounts.api.viewsets import UserViewSet
+from apps.occurrences.api.viewsets import OccurrenceViewSet
 
 admin.site.site_header = 'Administração Denúncia Fácil'
 admin.site.site_title = 'Denúnncia Fácil'
@@ -14,6 +15,7 @@ admin.site.index_title = 'Página Inicial'
 
 router = routers.DefaultRouter()
 router.register(r'accounts', UserViewSet, basename='accounts')
+router.register(r'occurrences', OccurrenceViewSet, basename='occurrences')
 
 
 urlpatterns = [
