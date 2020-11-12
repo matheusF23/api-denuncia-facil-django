@@ -64,3 +64,76 @@ $ pip install -r environments/requirements-local.txt
     "name": "user name 2",
     "cellphone" : "9999999999"
     }  
+
+* Endpoint *occurrences*
+
+  * POST register new occurrence (required field: license_plate)\
+    ```/api/occurrences/```
+    * Data response
+    ```json
+    {
+    "Message": "Ocorrência registrada com sucesso",
+    "id": 1,
+    "license_plate": "abc1234",
+    "occurrence_type": "batida",
+    "occurrence_title": "acidente feio",
+    "location": "maranhão novo",
+    "created_at": "2020-11-12"
+    }
+    ```
+
+  * GET list user occurrences (no required fields)\
+    ```/api/occurrences/```
+    * Data response
+    ```json
+    [
+      {
+      "id": 1,
+      "license_plate": "abc1234",
+      "occurrence_type": "batida",
+      "occurrence_title": "acidente feio",
+      "location": "maranhão novo",
+      "created_at": "2020-11-11"
+      },
+      {
+      "id": 2,
+      "license_plate": "cas1234",
+      "occurrence_type": "estacionamento indevido",
+      "occurrence_title": "estacionamento",
+      "location": "centro",
+      "created_at": "2020-11-12"
+      }
+    ]
+    ```
+
+  * GET list user selected occurrence (no required fields)\
+    ```/api/occurrences/<occurrence_id>/```
+    * Data response
+    ```json
+    {
+    "id": 2,
+    "license_plate": "cas1234",
+    "occurrence_type": "estacionamento indevido",
+    "occurrence_title": "estacionamento",
+    "location": "centro",
+    "created_at": "2020-11-12"
+    }
+    ```
+
+  * PUT update occurrence (no required fields. The can't update guard, user and status)\
+    ```/api/occurrences/<occurrence_id>/```
+    * Data response
+    ```json
+    {
+    "id":1
+	  "license_plate": "abc4321",
+	  "occurrence_type": "batida feia",
+	  "occurrence_title": "acidente sinistro",
+	  "location": "maranhão novo",
+    "created_at": "2020-11-11"
+    }
+
+  * DELETE delete occurrence (no required fields)\
+    ```/api/occurrences/<occurrence_id>/```
+    * No data response
+  
