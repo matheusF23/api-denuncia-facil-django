@@ -9,5 +9,5 @@ class OccurrenceSerializer(serializers.ModelSerializer):
     class Meta:
         model = Occurrence
         fields = ['id', 'license_plate', 'occurrence_type', 'occurrence_title',
-                  'location', 'created_at']
+                  'location', 'observation', 'created_at']
         read_only_fields = ('id',)

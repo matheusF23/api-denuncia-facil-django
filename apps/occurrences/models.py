@@ -15,6 +15,7 @@ class Occurrence(models.Model):
     occurrence_type = models.CharField(max_length=50, blank=True, null=True, verbose_name='tipo')
     occurrence_title = models.CharField(max_length=255, blank=True, null=True, verbose_name='título')
     location = models.CharField(max_length=400, blank=True, null=True, verbose_name='localização')
+    observation = models.CharField(max_length=400, blank=True, null=True, verbose_name='observação')
 
     STATUS_CHOICES = [
         (0, 'Enviado'),
