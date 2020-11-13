@@ -67,7 +67,7 @@ $ pip install -r environments/requirements-local.txt
 
 * Endpoint *occurrences*
 
-  * POST register new occurrence (required field: license_plate)\
+  * POST register new occurrence (required field: license_plate, optional fields: occurrence_type, occurrence_title, observation, location, created_at )\
     ```/api/occurrences/```
     * Data response
     ```json
