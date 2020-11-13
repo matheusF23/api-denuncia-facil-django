@@ -17,6 +17,7 @@ class Occurrence(models.Model):
     location = models.CharField(max_length=400, blank=True, null=True, verbose_name='localização')
     observation = models.CharField(max_length=400, blank=True, null=True, verbose_name='observação')
     anonymous = models.BooleanField(default=False, verbose_name='denúncia anônima')
+    image = models.ImageField(upload_to='occurrences', blank=True, null=True, verbose_name='imagem')
 
     STATUS_CHOICES = [
         (0, 'Enviado'),
