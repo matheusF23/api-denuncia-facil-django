@@ -34,4 +34,5 @@ class OccurrenceViewSet(viewsets.GenericViewSet, mixins.ListModelMixin,
         anonymous = self.request.data.get('anonymous', None)
         if (anonymous):
             serializer.save()
-        serializer.save(user=self.request.user)
+        else:
+            serializer.save(user=self.request.user)
