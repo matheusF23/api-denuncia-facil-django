@@ -77,6 +77,7 @@ $ pip install -r environments/requirements-local.txt
     "license_plate": "abc1234",
     "occurrence_type": "batida",
     "occurrence_title": "acidente feio",
+    "observation": "o cara me deu uma batida atrás"
     "location": "maranhão novo",
     "created_at": "2020-11-12"
     }
@@ -92,6 +93,7 @@ $ pip install -r environments/requirements-local.txt
       "license_plate": "abc1234",
       "occurrence_type": "batida",
       "occurrence_title": "acidente feio",
+      "observation": "o cara me deu uma batida atrás"
       "location": "maranhão novo",
       "created_at": "2020-11-11"
       },
