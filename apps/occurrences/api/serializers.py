@@ -7,7 +7,7 @@ from ..models import Occurrence
 
 class OccurrenceSerializer(serializers.ModelSerializer):
     """Serializer a Occurrence"""
-    image = Base64ImageField()
+    image = Base64ImageField(required=False)
 
     class Meta:
         model = Occurrence
@@ -16,5 +16,5 @@ class OccurrenceSerializer(serializers.ModelSerializer):
         read_only_fields = ('id',)
 
     def create(self, validated_data):
-        image = validated_data.pop('image')
+        image = validated_data.pop('image', None)
         return Occurrence.objects.create(image=image, **validated_data)
