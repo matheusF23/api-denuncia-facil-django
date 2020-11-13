@@ -7,7 +7,7 @@ from denunciafacilapi import settings
 
 
 class Occurrence(models.Model):
-    user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.PROTECT,
+    user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.PROTECT, blank=True, null=True,
                              verbose_name='nome usuário')
     guard = models.ForeignKey(Guard, on_delete=models.PROTECT, blank=True, null=True,
                               verbose_name='guarda')
@@ -16,6 +16,7 @@ class Occurrence(models.Model):
     occurrence_title = models.CharField(max_length=255, blank=True, null=True, verbose_name='título')
     location = models.CharField(max_length=400, blank=True, null=True, verbose_name='localização')
     observation = models.CharField(max_length=400, blank=True, null=True, verbose_name='observação')
+    anonymous = models.BooleanField(default=False, verbose_name='denúncia anônima')
 
     STATUS_CHOICES = [
         (0, 'Enviado'),

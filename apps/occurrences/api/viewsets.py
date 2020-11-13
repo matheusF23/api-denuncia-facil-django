@@ -31,4 +31,7 @@ class OccurrenceViewSet(viewsets.GenericViewSet, mixins.ListModelMixin,
 
     def perform_create(self, serializer):
         """Create a new occurrence"""
+        anonymous = self.request.data.get('anonymous', None)
+        if (anonymous):
+            serializer.save()
         serializer.save(user=self.request.user)
