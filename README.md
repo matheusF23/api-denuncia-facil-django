@@ -79,6 +79,7 @@ $ pip install -r environments/requirements-local.txt
     "occurrence_title": "acidente feio",
     "observation": "o cara me deu uma batida atrás",
     "anonymous": false,
+    "status": 0,
     "image" : "https://img.freepik.com/fotos-gratis/gotas-de-oleo-na-imagem-abstrata-padrao-psicodelico-de-agua_23-2148290141.jpg?size=626&ext=jpg",
     "location": "maranhão novo",
     "created_at": "2020-11-12"
@@ -99,6 +100,7 @@ $ pip install -r environments/requirements-local.txt
       "location": "maranhão novo",
       "anonymous": false,
       "image": null,
+      "status": 0,
       "created_at": "2020-11-11"
       },
       {
@@ -108,6 +110,7 @@ $ pip install -r environments/requirements-local.txt
       "occurrence_title": "estacionamento",
       "location": "centro",
       "anonymous": false,
+      "status": 0,
       "image" : "https://img.freepik.com/fotos-gratis/gotas-de-oleo-na-imagem-abstrata-padrao-psicodelico-de-agua_23-2148290141.jpg?size=626&ext=jpg",
       "created_at": "2020-11-12"
       }
@@ -124,6 +127,7 @@ $ pip install -r environments/requirements-local.txt
     "occurrence_type": "estacionamento indevido",
     "occurrence_title": "estacionamento",
     "anonymous": false,
+    "status": 0,
     "image" : "https://img.freepik.com/fotos-gratis/gotas-de-oleo-na-imagem-abstrata-padrao-psicodelico-de-agua_23-2148290141.jpg?size=626&ext=jpg",
     "location": "centro",
     "created_at": "2020-11-12"
@@ -141,6 +145,7 @@ $ pip install -r environments/requirements-local.txt
 	  "occurrence_title": "acidente sinistro",
 	  "location": "maranhão novo",
     "anonymous": false,
+    "status": 0,
     "image" : "https://img.freepik.com/fotos-gratis/gotas-de-oleo-na-imagem-abstrata-padrao-psicodelico-de-agua_23-2148290141.jpg?size=626&ext=jpg",
     "created_at": "2020-11-11"
     }
@@ -148,4 +153,6 @@ $ pip install -r environments/requirements-local.txt
   * DELETE delete occurrence (no required fields)\
     ```/api/occurrences/<occurrence_id>/```
     * No data response
+  
+  **Obs**: o status pode ser 0 ou 1, quando for 0 é *enviado* e quando for 1 é *recebido*
   

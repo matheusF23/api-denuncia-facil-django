@@ -12,8 +12,8 @@ class OccurrenceSerializer(serializers.ModelSerializer):
     class Meta:
         model = Occurrence
         fields = ['id', 'license_plate', 'occurrence_type', 'occurrence_title',
-                  'location', 'observation', 'anonymous', 'image', 'created_at']
-        read_only_fields = ('id',)
+                  'location', 'observation', 'anonymous', 'status', 'created_at', 'image']
+        read_only_fields = ('id', 'status')
 
     def create(self, validated_data):
         image = validated_data.pop('image', None)
