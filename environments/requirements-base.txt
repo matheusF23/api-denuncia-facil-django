@@ -7,3 +7,4 @@ dj-database-url==0.5.0
 dj-static==0.0.6
 Pillow==7.1.2
 django-extra-fields==3.0.2
+psycopg2
