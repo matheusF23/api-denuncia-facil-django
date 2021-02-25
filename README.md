@@ -3,9 +3,9 @@
 Projeto utiliza [django 3.0](https://docs.djangoproject.com/pt-br/3.0/) e [django rest framework](https://www.django-rest-framework.org)
 
 ## Clonar projeto para desenvolvimento
-User o comando para clonar o projeto em seu computador
+Use o comando para clonar o projeto em seu computador
 ```
-$ git clone https://gitlab.com/tertulia/app-denuncia-facil/api-e-web.git
+$ git clone git@github.com:matheusF23/api-denuncia-facil-django.git
 ```
 ## Instalar dependências
 ### Ambiente virtual
